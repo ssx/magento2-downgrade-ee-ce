@@ -1,4 +1,8 @@
 --
+-- 05_salesrule.sql
+-- 
+
+--
 -- This procedure will give you the ability to drop a foreign key if it exists which MySQL/MariaDB can't do on its own.
 -- Taken from: https://stackoverflow.com/questions/17161496/drop-foreign-key-only-if-it-exists
 --

@@ -1,3 +1,7 @@
+--
+-- 03_cms.sql
+-- 
+
 update cms_page set creation_time = update_time WHERE `creation_time` LIKE '%0000%';
 
 -- Enable `block_id` for block store

@@ -1,3 +1,8 @@
+--
+-- 04_catalogrule.sql
+-- 
+
+
 -- Enable `rule_id` column for catalogrule
 
 ALTER TABLE `catalogrule_customer_group`

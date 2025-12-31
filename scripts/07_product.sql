@@ -1,3 +1,8 @@
+--
+-- 07_product.sql
+-- 
+
+
 -- Enable `entity_id` column for catalog product entity
 
 ALTER TABLE `catalog_product_entity_datetime`

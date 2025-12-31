@@ -1,3 +1,7 @@
+--
+-- 06_category.sql
+-- 
+
 -- Enable `entity_id` column for catalog category entity
 DELETE FROM catalog_category_entity WHERE row_id NOT IN (
     SELECT tmp_category.row_id FROM (SELECT MAX(row_id) AS row_id FROM catalog_category_entity GROUP BY entity_id) tmp_category

@@ -25,7 +25,7 @@ Before migrating, change your indexer mode to manual, so the triggers are safely
 > - `database` is your magento database
 > - `script.sql` is the script you want to run from the following list:
 
-You can use the following [sample](./downgrade.sample).
+You can use the following [sample](./downgrade.sample) or generate your own using `cat scripts/*.sql > migrate.sql`.
 
 **READY TO USE:**
 
