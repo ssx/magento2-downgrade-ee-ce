@@ -2,6 +2,29 @@
 -- 07_product.sql
 -- 
 
+--
+-- This procedure will give you the ability to drop a foreign key if it exists which MySQL/MariaDB can't do on its own.
+-- Taken from: https://stackoverflow.com/questions/17161496/drop-foreign-key-only-if-it-exists
+--
+DROP PROCEDURE IF EXISTS PROC_DROP_FOREIGN_KEY;
+DELIMITER $$
+CREATE PROCEDURE PROC_DROP_FOREIGN_KEY(IN tableName VARCHAR(64), IN constraintName VARCHAR(64))
+BEGIN
+    IF EXISTS(
+        SELECT * FROM information_schema.table_constraints
+        WHERE 
+            table_schema    = DATABASE()     AND
+            table_name      = tableName      AND
+            constraint_name = constraintName AND
+            constraint_type = 'FOREIGN KEY')
+    THEN
+        SET @query = CONCAT('ALTER TABLE ', tableName, ' DROP FOREIGN KEY ', constraintName, ';');
+        PREPARE stmt FROM @query; 
+        EXECUTE stmt; 
+        DEALLOCATE PREPARE stmt; 
+    END IF; 
+END$$
+DELIMITER ;
 
 -- Enable `entity_id` column for catalog product entity
 
@@ -518,13 +541,9 @@ ALTER TABLE `wishlist_item`
     ADD CONSTRAINT `WISHLIST_ITEM_PRODUCT_ID_CATALOG_PRODUCT_ENTITY_ENTITY_ID` FOREIGN KEY (`product_id`) REFERENCES `catalog_product_entity` (`entity_id`) ON DELETE CASCADE ON UPDATE RESTRICT;
 
 -- DROP FOREIGN KEY on the sequence table
-ALTER TABLE `magento_targetrule_product`
-    DROP FOREIGN KEY `MAGENTO_TARGETRULE_PRD_PRD_ID_SEQUENCE_PRD_SEQUENCE_VAL`;
 
-ALTER TABLE `email_catalog`
-    DROP FOREIGN KEY `EMAIL_CATALOG_PRODUCT_ID_SEQUENCE_PRODUCT_SEQUENCE_VALUE`;
-
-ALTER TABLE `magento_giftregistry_item`
-    DROP FOREIGN KEY `MAGENTO_GIFTREGISTRY_ITEM_PRD_ID_SEQUENCE_PRD_SEQUENCE_VAL`;
+CALL PROC_DROP_FOREIGN_KEY("magento_targetrule_product", "MAGENTO_TARGETRULE_PRD_PRD_ID_SEQUENCE_PRD_SEQUENCE_VAL");
+CALL PROC_DROP_FOREIGN_KEY("email_catalog", "EMAIL_CATALOG_PRODUCT_ID_SEQUENCE_PRODUCT_SEQUENCE_VALUE");
+CALL PROC_DROP_FOREIGN_KEY("magento_giftregistry_item", "MAGENTO_GIFTREGISTRY_ITEM_PRD_ID_SEQUENCE_PRD_SEQUENCE_VAL");
 
 DROP TABLE `sequence_product_bundle_selection`,`sequence_product_bundle_option`,`sequence_product`;
