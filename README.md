@@ -11,7 +11,7 @@ by the tool will remove some specific tables and attributes of the Adobe Commerc
 
 **NOTICE**
 - This tool has been initially developed for Magento Commerce 2.2.* version.
-- This tool is working with latest Adobe Commerce 2.4.* (tested with 2.4.7-p3, thanks to this amazing contributor : [@LucaGallinari](https://github.com/LucaGallinari) [![GitHub followers](https://img.shields.io/github/followers/LucaGallinari.svg?style=social)](https://github.com/LucaGallinari) ❤️)
+- This tool is working with latest Adobe Commerce 2.4.* (tested with 2.4.7-p3, thanks to this amazing contributor: [@LucaGallinari](https://github.com/LucaGallinari) [![GitHub followers](https://img.shields.io/github/followers/LucaGallinari.svg?style=social)](https://github.com/LucaGallinari) ❤️)
 
 ## How to use
 
@@ -29,18 +29,18 @@ You can use the following [sample](./downgrade.sample).
 
 **READY TO USE:**
 
-- [Attributes](./scripts/attributes.sql)
-- [SalesRule](./scripts/salesrule.sql)
-- [CatalogRule](./scripts/catalogrule.sql)
-- [Category](./scripts/category.sql)
-- [Product](./scripts/product.sql)
-- [CMS](./scripts/cms.sql)
-- [EE Tables](./scripts/ee.sql)
-- [Wishlist](./scripts/wishlist.sql)
-- [CatalogInventory](./scripts/cataloginventory.sql)
-- [Customer](./scripts/customer.sql)
-- [Quote](./scripts/quote.sql)
-- [Sales](./scripts/sales.sql)
+- [Attributes](./scripts/01_attributes.sql)
+- [EE Tables](./scripts/02_ee.sql)
+- [CMS](./scripts/03_cms.sql)
+- [CatalogRule](./scripts/04_catalogrule.sql)
+- [SalesRule](./scripts/05_salesrule.sql)
+- [Category](./scripts/06_category.sql)
+- [Product](./scripts/07_product.sql)
+- [CatalogInventory](./scripts/08_cataloginventory.sql)
+- [Customer](./scripts/09_customer.sql)
+- [Quote](./scripts/10_quote.sql)
+- [Sales](./scripts/11_sales.sql)
+- [Wishlist](./scripts/12_wishlist.sql)
 
 ## Similar package
 
