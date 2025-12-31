@@ -57,6 +57,9 @@ ALTER TABLE `cms_block`
     MODIFY COLUMN `block_id` SMALLINT(6) NOT NULL AUTO_INCREMENT COMMENT 'Entity ID';
 SET FOREIGN_KEY_CHECKS = 1;
 
+-- Clean up any pages we couldn't re-key
+DELETE FROM cms_page_store WHERE page_id = 0;
+
 -- Update the `page_id` relation link for page store
 ALTER TABLE `cms_page_store`
     DROP FOREIGN KEY `CMS_PAGE_STORE_ROW_ID_CMS_PAGE_ROW_ID`,
